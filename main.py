@@ -17,10 +17,24 @@ print(df.head())
 
 #COMBINE TACTICS INTO A COLUMN
 tacticColumns= ["TActic", "TA_inb", "TA_lat", "TA_out"]
-#given row, have to look at all tactic columns, return list of non empty unique tactics
+#for each row, put all the tactics into a list and output as labels
 def combTactics(row):
-    tactics=[]
-    
+    tactics=[] #create empty row
+    for col in tacticColumns:
+        value = row[col]
+        if isinstance(value, str) and value.strip()!= "" :
+            tactics.append(value.strip())
+    return list(set(tactics)) #remove duplicates
+
+df["Labels"]= df.apply(combTactics, axis = 1)
+print("Tactics combined into 'Labels' column: ")
+print(df[["classtype", "Labels"]].head())
+
+
+#MAKE SURE EACH ROW HAS AT LEAST 1 LABEL
+df = df[df["Labels"].map(len)>0]
+print("rows without labels not here, new dataset size is: ", len(df))
+
 
 
 
