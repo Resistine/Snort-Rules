@@ -9,8 +9,8 @@ import tarfile
 import pandas as pd
 import ast
 
-from snortparser.snortparser import Parser, Dicts
-#from SRParser import SnortParser
+#from snortparser.snortparser import Parser, Dicts
+from SRParser import SnortParser
 import mitreattack.attackToExcel.attackToExcel as attackToExcel
 
 # Constants
