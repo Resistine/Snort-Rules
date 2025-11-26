@@ -4,14 +4,21 @@
 import sys
 import traceback
 import os.path
+import os
 import urllib.request
 import tarfile
 import pandas as pd
 import ast
 
-from snortparser.snortparser import Parser, Dicts
-#from snortparser import Parser
+# Ensure the project root is on sys.path so local packages (snortparser) can be imported
+# when this script is executed from the `Snort-Rules` directory.
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+
+from snortparser import Parser, Dicts
 import mitreattack.attackToExcel.attackToExcel as attackToExcel
+
 
 # Constants
 INBOUND = 'inb'
@@ -275,10 +282,24 @@ with open(CSVFILE, 'w') as csv_rules:
                     df['TActic'] = get_TActic(classtype, 'TActic')
 
                 # parse techniques from references
-                if pd.notna(reference):
+                # `reference` may be a pandas NA, a string representation of a list, or already a list/sequence.
+                if reference is not pd.NA:
                     try:
-                        ref_list = ast.literal_eval(reference)
+                        # normalize to a Python list of strings
+                        if isinstance(reference, str):
+                            ref_list = ast.literal_eval(reference)
+                            if not isinstance(ref_list, (list, tuple)):
+                                ref_list = [ref_list]
+                        elif isinstance(reference, pd.Series):
+                            ref_list = reference.tolist()
+                        elif isinstance(reference, (list, tuple)):
+                            ref_list = list(reference)
+                        else:
+                            # fallback: wrap single value
+                            ref_list = [reference]
+
                         s = pd.Series(ref_list)
+                        # filter only MITRE technique URLs
                         s = s[s.str.startswith('attack.mitre.org/techniques/')]
                         if not s.empty:
                             # take the first technique for now
