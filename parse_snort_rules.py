@@ -30,6 +30,14 @@ DIR = "snort3-community-rules"
 FILE = "snort3-community.rules"
 RULES = os.path.join(DIR, FILE)
 
+# ProofPoint Emerging Threats Open Ruleset
+ET_FILE = "emerging.rules"
+ET_LINK = "https://rules.emergingthreats.net/open/suricata-7.0.3/emerging.rules.zip"
+ET_DIR = "et-open-rules"
+ET_RULES = os.path.join(ET_DIR, ET_FILE)
+
+
+
 # MITRE ATT&CK files
 MAPPINGS = "mappings.csv"
 ATTACK_DIR = "enterprise-attack"
@@ -203,7 +211,13 @@ with open(CSVFILE, 'w') as csv_rules:
                         s[mask] = s[mask].str.replace('attack.mitre.org/techniques/', '', n=1)
                         # get just the elements that match the mask and its name from the MITRE ATT&CK Excel file
                         df['Technique'] = s[1]
-                        df['Tname'] = Tes.loc[Tes['ID'] == s[1], "name"].iloc[0]
+                        
+                        # Safe lookup for Tname
+                        tname_lookup = Tes.loc[Tes['ID'] == s[1], "name"]
+                        if not tname_lookup.empty:
+                            df['Tname'] = tname_lookup.iloc[0]
+                        else:
+                            print(f"Warning: Technique ID {s[1]} not found in MITRE ATT&CK data.")
 
                 # print the Pandas DataFrame to the output file
                 csv_rules.write(df.to_csv(index=False, header=False))

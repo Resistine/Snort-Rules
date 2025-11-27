@@ -8,7 +8,7 @@ The second step is to assign them with MITRE ATT&CK using https://attack.mitre.o
 
 > pip install mitreattack-python
 
-> git clone https://github.com/g-rd/snortparser.git
+> git clone https://github.com/resistine/snortparser.git
 
 ### Run
 
