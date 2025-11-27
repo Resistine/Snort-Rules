@@ -16,7 +16,9 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
+
 from snortparser import Parser, Dicts
+#from SRParser import SnortParser
 import mitreattack.attackToExcel.attackToExcel as attackToExcel
 
 
