@@ -4,6 +4,9 @@ snortparser/
 snort3-community-rules/
 rules_parsed.csv
 
+# Mac and other BS
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
