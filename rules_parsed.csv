@@ -1844,6 +1844,7 @@ sid,proto,source,src_port,arrow,destination,dst_port,classtype,direction,TActic,
 2585,tcp,$EXTERNAL_NET,any,->,$HTTP_SERVERS,$HTTP_PORTS,attempted-recon,inb,Reconnaissance,,,Reconnaissance,,,,,,"""SERVER-WEBAPP nessus 2.x 404 probe""","['nessus', '10386']"
 2587,tcp,$HOME_NET,4711,->,$EXTERNAL_NET,any,policy-violation,out,,,,,,,,,,"""PUA-P2P eDonkey server response""","['url', 'www.emule-project.net']"
 2588,tcp,$EXTERNAL_NET,any,->,$HTTP_SERVERS,$HTTP_PORTS,web-application-activity,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-WEBAPP TUTOS path disclosure attempt""","['bugtraq', '10129']"
+2589,http,any,$HTTP_PORTS,->,$HOME_NET,any,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""OS-WINDOWS Microsoft Windows Content-Disposition CLSID command attempt""","['bugtraq', '9510']"
 2597,tcp,$EXTERNAL_NET,any,->,$HTTP_SERVERS,$HTTP_PORTS,web-application-attack,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-WEBAPP Samba SWAT Authorization overflow attempt""","['bugtraq', '10780']"
 2598,tcp,$EXTERNAL_NET,any,->,$HTTP_SERVERS,$HTTP_PORTS,web-application-attack,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-WEBAPP Samba SWAT Authorization port 901 overflow attempt""","['bugtraq', '10780']"
 2599,tcp,$EXTERNAL_NET,any,->,$SQL_SERVERS,$ORACLE_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-ORACLE dbms_repcat.add_grouped_column buffer overflow attempt""",
@@ -3481,6 +3482,7 @@ sid,proto,source,src_port,arrow,destination,dst_port,classtype,direction,TActic,
 42883,tcp,$HOME_NET,any,->,$EXTERNAL_NET,$HTTP_PORTS,trojan-activity,out,Command and Control,,,,,,,Command and Control,,"""MALWARE-CNC Win.Trojan.MadMax implant outbound connection attempt""",
 42884,tcp,$HOME_NET,any,->,$EXTERNAL_NET,$HTTP_PORTS,trojan-activity,out,Command and Control,,,,,,,Command and Control,,"""MALWARE-CNC Win.Trojan.MadMax implant outbound connection""",
 42885,tcp,$HOME_NET,any,<>,$EXTERNAL_NET,$HTTP_PORTS,trojan-activity,,Command and Control,,,,,,,,,"""MALWARE-CNC WashingTon ssl certificate negotiation attempt""",
+42886,http,any,any,->,any,any,trojan-activity,,Command and Control,,,,,,,,,"""MALWARE-CNC HttpBrowser User-Agent outbound communication attmept""",
 42944,tcp,any,any,->,$HOME_NET,445,attempted-admin,inb,Privilege Escalation,,,Privilege Escalation,,,,,,"""OS-WINDOWS Microsoft Windows SMB remote code execution attempt""","['cve', '2017-0144']"
 43002,tcp,any,any,->,$HOME_NET,445,misc-activity,inb,,T1077,,,,,,,,"""PROTOCOL-OTHER NETBIOS SMB IPC share access attempt""","['url', 'attack.mitre.org/techniques/T1077']"
 43003,tcp,any,any,->,$HOME_NET,445,misc-activity,inb,,T1077,,,,,,,,"""PROTOCOL-OTHER NETBIOS SMB IPC share access attempt""","['url', 'attack.mitre.org/techniques/T1077']"
@@ -3524,6 +3526,7 @@ sid,proto,source,src_port,arrow,destination,dst_port,classtype,direction,TActic,
 44592,tcp,$EXTERNAL_NET,443,->,$HOME_NET,any,trojan-activity,inb,Command and Control,,,Command and Control,,,,,,"""MALWARE-CNC Win.Trojan.PandaZeus self-signed certificate exchange""","['url', 'virustotal.com/#/file/00fa65c8fced0abfab3f544801014a349f7d960819d8d79c47abe090bd75ccfc']"
 44643,tcp,$EXTERNAL_NET,any,->,$HOME_NET,8291,denial-of-service,inb,Impact,,,Impact,,,,,,"""SERVER-OTHER Mikrotik RouterOS denial of service attempt""","['cve', '2012-6050']"
 44652,tcp,$HOME_NET,any,->,$EXTERNAL_NET,$HTTP_PORTS,trojan-activity,out,Command and Control,,,,,,,Command and Control,,"""MALWARE-CNC Win.Zusy variant outbound connection""","['url', 'www.virustotal.com/en/file/5dea4247e021eeeb1347ff269a357dee77e8ac1837383b0ef37fb123339639a1/analysis/']"
+44678,http,any,any,->,any,any,trojan-activity,,Command and Control,,,,,,,,,"""POLICY-OTHER NetSupport Manager RAT outbound connection detected""","['url', 'blogs.vmware.com/security/2023/11/netsupport-rat-the-rat-king-returns.html']"
 44687,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-admin,inb,Privilege Escalation,,,Privilege Escalation,,,,,,"""SERVER-WEBAPP Netgear DGN1000 series routers authentication bypass attempt""","['bugtraq', '60281']"
 44688,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-admin,inb,Privilege Escalation,,,Privilege Escalation,,,,,,"""SERVER-WEBAPP Netgear DGN1000 series routers arbitrary command execution attempt""","['bugtraq', '60281']"
 44689,tcp,$HOME_NET,any,->,$EXTERNAL_NET,$HTTP_PORTS,trojan-activity,out,Command and Control,,,,,,,Command and Control,,"""MALWARE-CNC Win.Trojan.Gen variant outbound connection""","['url', 'us-cert.gov/ncas/alerts/TA17-293A']"
@@ -3949,6 +3952,9 @@ sid,proto,source,src_port,arrow,destination,dst_port,classtype,direction,TActic,
 57907,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-admin,inb,Privilege Escalation,,,Privilege Escalation,,,,,,"""SERVER-WEBAPP Microsoft Exchange autodiscover server side request forgery attempt""","['cve', '2021-31207']"
 57908,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-admin,inb,Privilege Escalation,,,Privilege Escalation,,,,,,"""SERVER-WEBAPP Microsoft Exchange autodiscover server side request forgery attempt""","['cve', '2021-31207']"
 57983,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-admin,inb,Privilege Escalation,,,Privilege Escalation,,,,,,"""SERVER-WEBAPP Microsoft Exchange autodiscover server side request forgery attempt""","['cve', '2021-31207']"
+58615,http,any,$HTTP_PORTS,->,$HOME_NET,any,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""OS-WINDOWS Microsoft Windows Content-Disposition CLSID command attempt""","['bugtraq', '9510']"
+58616,http,any,$HTTP_PORTS,->,$HOME_NET,any,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""OS-WINDOWS Microsoft Windows Content-Disposition CLSID command attempt""","['bugtraq', '9510']"
+58617,http,any,$HTTP_PORTS,->,$HOME_NET,any,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""OS-WINDOWS Microsoft Windows Content-Disposition CLSID command attempt""","['bugtraq', '9510']"
 58722,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-OTHER Apache Log4j logging remote code execution attempt""","['cve', '2021-44228']"
 58723,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-OTHER Apache Log4j logging remote code execution attempt""","['cve', '2021-44228']"
 58724,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-OTHER Apache Log4j logging remote code execution attempt""","['cve', '2021-44228']"
@@ -3993,8 +3999,14 @@ sid,proto,source,src_port,arrow,destination,dst_port,classtype,direction,TActic,
 59932,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,trojan-activity,inb,Command and Control,,,Command and Control,,,,,,"""MALWARE-BACKDOOR Jsp.Webshell.Behinder upload attempt""","['cve', '2022-26134']"
 59933,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,trojan-activity,inb,Command and Control,,,Command and Control,,,,,,"""MALWARE-BACKDOOR Jsp.Webshell.Noop upload attempt""","['cve', '2022-26134']"
 59934,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-WEBAPP Atlassian Confluence OGNL expression injection attempt""","['cve', '2022-26134']"
+59941,http,any,any,->,any,any,attempted-user,,Initial Access,,,,,,,,,"""SERVER-WEBAPP Atlassian Confluence OGNL expression injection attempt""","['cve', '2022-26134']"
+59947,http,any,any,->,any,any,attempted-user,,Initial Access,,,,,,,,,"""SERVER-WEBAPP Atlassian Confluence OGNL expression injection attempt""","['cve', '2022-26134']"
+59948,http,any,any,->,any,any,attempted-user,,Initial Access,,,,,,,,,"""SERVER-WEBAPP Atlassian Confluence OGNL expression injection attempt""","['cve', '2022-26134']"
 60642,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-WEBAPP Microsoft Exchange Server remote code execution attempt""","['cve', '2022-41040']"
 62362,tcp,$HOME_NET,any,->,$EXTERNAL_NET,$HTTP_PORTS,trojan-activity,out,Command and Control,,,,,,,Command and Control,,"""MALWARE-CNC Win.Dropper.Gamaredon command and control beacon attempt""","['url', 'www.virustotal.com/gui/file/726e91a882b9c70893cbc4ac2cdfb0ffb80a8b6f58d4cc5bfdd59d60486673fe']"
+62506,http,any,any,->,any,any,attempted-user,,Initial Access,,,,,,,,,"""SERVER-WEBAPP Atlassian Confluence remote code execution attempt""","['cve', '2023-22515']"
+62507,http,any,any,->,any,any,attempted-user,,Initial Access,,,,,,,,,"""SERVER-WEBAPP Atlassian Confluence remote code execution attempt""","['cve', '2023-22515']"
+300001,http,any,any,->,any,any,web-application-attack,,Initial Access,,,,,,,,,"""SERVER-WEBAPP Citrix ADC and Gateway arbitrary code execution attempt""","['cve', '2019-19781']"
 300052,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""OS-WINDOWS Microsoft Windows HTTP protocol stack remote code execution attempt""","['cve', '2021-31166']"
 300055,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-OTHER Apache Log4j logging remote code execution attempt""","['cve', '2021-44228']"
 300056,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-OTHER Apache Log4j logging remote code execution attempt""","['cve', '2021-44228']"
@@ -4002,3 +4014,5 @@ sid,proto,source,src_port,arrow,destination,dst_port,classtype,direction,TActic,
 300058,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-OTHER Apache Log4j logging remote code execution attempt""","['cve', '2021-44228']"
 300061,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-OTHER Apache Log4j logging remote code execution attempt""","['cve', '2021-44228']"
 300131,tcp,$EXTERNAL_NET,any,->,$HOME_NET,$HTTP_PORTS,attempted-user,inb,Initial Access,,,Initial Access,,,,,,"""SERVER-WEBAPP F5 BIG-IP iControl remote code execution attempt""","['cve', '2022-1388']"
+300306,ssl,any,any,->,any,any,attempted-user,,Initial Access,,,,,,,,,"""SERVER-OTHER OpenSSL x509 crafted email address buffer overflow attempt""","['cve', '2022-3602']"
+300307,ssl,any,any,->,any,any,attempted-user,,Initial Access,,,,,,,,,"""SERVER-OTHER OpenSSL x509 crafted email address buffer overflow attempt""","['cve', '2022-3602']"
